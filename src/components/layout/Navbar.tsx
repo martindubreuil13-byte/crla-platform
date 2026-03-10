@@ -1,0 +1,51 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Container from "./Container";
+import BadgeLogo from "../ui/BadgeLogo";
+
+export default function Navbar() {
+  const pathname = usePathname();
+
+  const navLink =
+    "text-[var(--text-muted)] transition hover:text-white";
+  const activeLink = "text-white";
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[rgba(11,20,38,0.75)] backdrop-blur-xl">
+      <Container>
+        <div className="flex h-20 items-center justify-between">
+          <BadgeLogo />
+
+          <nav className="flex items-center gap-8 text-sm">
+
+            <Link
+              href="/"
+              className={`${navLink} ${pathname === "/" ? activeLink : ""}`}
+            >
+              Home
+            </Link>
+
+            <Link
+              href="/directory"
+              className={`${navLink} ${
+                pathname === "/directory" ? activeLink : ""
+              }`}
+            >
+              Directory
+            </Link>
+
+            <Link
+              href="/agent"
+              className="rounded-full bg-[var(--gold-main)] px-6 py-2 font-semibold text-black transition hover:-translate-y-0.5 hover:bg-[var(--gold-soft)] hover:shadow-[0_8px_25px_rgba(212,175,55,.35)]"
+            >
+              Agent Portal
+            </Link>
+
+          </nav>
+        </div>
+      </Container>
+    </header>
+  );
+}
