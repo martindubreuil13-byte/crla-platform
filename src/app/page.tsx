@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ArrowRight, BadgeDollarSign, Hammer, ShieldCheck } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Container from "@/components/layout/Container";
-import BadgeLogo from "@/components/ui/BadgeLogo";
 
 function StatCard({ value, title }: { value: string; title: string }) {
   return (
@@ -19,14 +18,14 @@ export default function HomePage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="relative overflow-hidden py-28 md:py-36">
+      <section className="relative overflow-hidden pt-24 pb-28 md:pt-28 md:pb-36">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(212,175,55,0.15),transparent_30%),radial-gradient(circle_at_20%_80%,rgba(31,64,114,0.35),transparent_35%)]" />
 
-        <Container>
-          <div className="grid items-center gap-20 lg:grid-cols-2">
+        <Container className="relative z-10">
+          <div className="grid items-start gap-16 lg:grid-cols-2">
 
             {/* LEFT */}
-            <div className="flex flex-col justify-center">
+            <div className="flex flex-col">
               <h1 className="max-w-2xl text-5xl font-bold leading-[1.1] md:text-7xl">
                 Renovate Now.<br/>
                 Pay at Closing.<br/>
@@ -42,14 +41,11 @@ export default function HomePage() {
               </p>
 
               <div className="mt-14 flex flex-col items-start gap-4">
-
-                {/* Primary CTA */}
                 <Link href="/directory" className="group inline-flex h-12 items-center gap-2 rounded-full bg-[var(--gold-main)] px-8 font-semibold text-black transition-all duration-300 hover:-translate-y-1 hover:bg-[var(--gold-soft)] hover:shadow-[0_15px_45px_rgba(212,175,55,.35)] active:scale-95">
                   Find an Agent Near You
                   <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
 
-                {/* Secondary CTA */}
                 <Link href="/how-it-works" className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 bg-white/5 px-8 font-semibold text-white backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 hover:shadow-[0_10px_30px_rgba(0,0,0,.25)]">
                   How It Works
                 </Link>
@@ -58,13 +54,11 @@ export default function HomePage() {
                   For Real Estate Professionals
                 </span>
 
-                {/* Tertiary CTA */}
                 <Link href="/get-certified" className="inline-flex h-12 items-center justify-center rounded-full border border-[var(--gold-main)]/30 bg-[rgba(212,175,55,0.08)] px-8 font-semibold text-[var(--gold-main)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:bg-[rgba(212,175,55,0.18)] hover:shadow-[0_10px_30px_rgba(212,175,55,.15)]">
                   Become a Certified Agent
                 </Link>
               </div>
 
-              {/* TRUST STRIP */}
               <div className="mt-14 flex flex-wrap gap-8 text-sm text-[var(--text-muted)]">
                 <span className="inline-flex items-center gap-2 transition-colors hover:text-white">
                   <ShieldCheck size={16} className="text-[var(--gold-main)]" />
@@ -83,7 +77,7 @@ export default function HomePage() {
 
             {/* RIGHT */}
             <div className="relative">
-              <div className="overflow-hidden rounded-[40px] border border-white/10 shadow-[0_60px_160px_rgba(0,0,0,.55)] transition-transform duration-500 hover:scale-[1.02]">
+              <div className="overflow-hidden rounded-[40px] border border-white/10 shadow-[0_60px_160px_rgba(0,0,0,.55)]">
                 <img
                   src="/images/hero-house-california.jpg"
                   alt="Beautiful renovated California home ready for sale"
@@ -91,11 +85,17 @@ export default function HomePage() {
                 />
               </div>
 
-              <div className="absolute -bottom-12 -left-12 hidden md:block">
-                <div className="rounded-[32px] border border-[var(--gold-main)]/25 bg-[rgba(11,20,38,0.65)] p-8 backdrop-blur-2xl shadow-[0_0_60px_rgba(212,175,55,.15)]">
-                  <BadgeLogo />
+              {/* BIG ROUND BADGE */}
+              <div className="absolute -bottom-16 -left-16 hidden md:block">
+                <div className="relative h-44 w-44 rounded-full bg-white shadow-[0_20px_60px_rgba(0,0,0,.45)] ring-8 ring-[rgba(212,175,55,0.25)] flex items-center justify-center">
+                  <img
+                    src="/images/branding/crla-logo.jpg"
+                    alt="CRLA Certification Badge"
+                    className="h-32 w-32 object-contain rounded-full"
+                  />
                 </div>
               </div>
+
             </div>
 
           </div>
@@ -127,7 +127,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="overflow-hidden rounded-[40px] border border-white/10 shadow-[0_40px_120px_rgba(0,0,0,.45)] transition-transform duration-500 hover:scale-[1.02]">
+            <div className="overflow-hidden rounded-[40px] border border-white/10 shadow-[0_40px_120px_rgba(0,0,0,.45)]">
               <img src="/images/kitchen-before-after.jpg" alt="Kitchen renovation comparison" className="aspect-[4/3] w-full object-cover" />
             </div>
           </div>
@@ -145,7 +145,6 @@ export default function HomePage() {
           </div>
 
           <div className="mt-20 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-
             {[
               ["/images/testimonial-house-1.jpg","We sold in just 4 days and received multiple offers above asking.","Sarah M.","San Diego, CA"],
               ["/images/testimonial-house-2.jpg","The upgrades paid for themselves. Buyers loved the presentation.","Daniel R.","Los Angeles, CA"],
@@ -160,7 +159,6 @@ export default function HomePage() {
                 <p className="text-sm text-[var(--text-muted)]">{loc}</p>
               </div>
             ))}
-
           </div>
         </Container>
       </section>
